@@ -99,20 +99,28 @@ _I'd love for you to make the most of this project - it's all about learning, he
    ### Solving Errors
 1. In the backend/ directory, edit the .env.sample file and add:
    
-   ```MONGODB_URI="mongodb://mongo/wanderlust"
-   ```
+   ```MONGODB_URI="mongodb://mongo/wanderlust"```
    
    This sets the MongoDB URI to connect to the database.
    
    ```CORS_ORIGIN="http://[your public ip]:5173" ```
+   
    This sets the CORS origin to allow requests from a specific public IP address with port 5173.
+   
 3. In the backend/ directory, also add the .env.docker file and include:
-   MONGODB_URI="mongodb://mongo/wanderlust"
+   
+   ```MONGODB_URI="mongodb://mongo/wanderlust"```
+   
    This specifies the MongoDB URI for Docker environment.
-   REDIS_URL="redis://redis:6379"
+   
+   ```REDIS_URL="redis://redis:6379"```
+   
    This sets the Redis URL for Docker environment, connecting to Redis at port 6379.
-4. In the frontend/ directory, edit the .env.sample file and add:
-   VITE_API_PATH="http://[your public ip]:5000"
+   
+5. In the frontend/ directory, edit the .env.sample file and add:
+   
+   ```VITE_API_PATH="http://[your public ip]:5000"```
+   
    This sets the API path for the frontend to communicate with the backend at the specified public IP address and port 5000.
    
 Kindly go through [CONTRIBUTING.md](https://github.com/krishnaacharyaa/wanderlust/blob/main/.github/CONTRIBUTING.md) to understand everything from setup to contributing guidelines.
