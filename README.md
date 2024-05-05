@@ -99,8 +99,8 @@ _I'd love for you to make the most of this project - it's all about learning, he
    ### Solving Errors
 1. In the backend/ directory, edit the .env.sample file and add:
    
-   '''MONGODB_URI="mongodb://mongo/wanderlust"
-   '''
+   ```MONGODB_URI="mongodb://mongo/wanderlust"
+   ```
    This sets the MongoDB URI to connect to the database.
    CORS_ORIGIN="http://[your public ip]:5173"
    This sets the CORS origin to allow requests from a specific public IP address with port 5173.
