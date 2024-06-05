@@ -9,6 +9,7 @@ FROM node:21-slim AS production
 WORKDIR /app
 COPY --from=builder /app .
 RUN npm install
+RUN npm run test
 COPY .env.docker .env
 EXPOSE 5000
 CMD ["npm", "start"]
