@@ -37,7 +37,7 @@ pipeline{
         }
         stage("build and test"){
             steps{
-                sh "docker build -t node.js-app ."
+                sh "docker build -t wanderlust-app ."
                 echo "code built and tested successfully"
             }
         }
