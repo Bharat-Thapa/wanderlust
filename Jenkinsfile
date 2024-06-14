@@ -42,11 +42,29 @@ pipeline{
             }
         }
 
-        stage("Deploy using Docker compose"){
-            steps{
-                sh "docker-compose up -d"
-                echo "code deployed successfully"
+        stage("Push"){
+            steps {
+                echo "Pushing the image to docker hub"
+                withCredentials([usernamePassword(credentialsId:"dockerHub",passwordVariable:"dockerHubPass",usernameVariable:"dockerHubUser")]){
+                sh "docker tag wanderlust-app ${env.dockerHubUser}/wanderlust-app:latest"
+                sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPass}"
+                sh "docker push ${env.dockerHubUser}/wanderlust-app:latest"
+                }
             }
+        }
+
+       stage('Deploy') {
+    steps {
+        withCredentials([file(credentialsId: KUBECONFIG_CREDENTIALS_ID, variable: 'KUBECONFIG')]) {
+            sh 'helm upgrade --install wanderlust-app ./helm-chart --set image.repository=${env.dockerHubUser}/reddit-clone-app --set image.tag=latest --kubeconfig $KUBECONFIG'
+        }
+    }
+}
+
+
+    post {
+        always {
+            cleanWs()
         }
     }
 }
