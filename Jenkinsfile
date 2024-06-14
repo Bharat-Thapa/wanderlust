@@ -2,6 +2,8 @@ pipeline {
     agent { label 'Dev-Server' }
     environment {
         SONAR_HOME = tool 'Sonar'
+        DOCKER_CREDENTIALS_ID = 'dockerhub-credentials'
+        KUBECONFIG_CREDENTIALS_ID = 'kubeconfig'
     }
     stages {
         stage('Clone Code from GitHub') {
