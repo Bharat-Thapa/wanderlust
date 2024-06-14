@@ -5,11 +5,10 @@ pipeline {
         DOCKER_CREDENTIALS_ID = 'dockerhub-credentials'
         KUBECONFIG_CREDENTIALS_ID = 'kubeconfig'
     }
-    stages {
-        stage('Clone Code from GitHub') {
+  stages {
+        stage('Checkout') {
             steps {
-                git url: 'https://github.com/krishnaacharyaa/wanderlust.git', branch: 'main'
-                echo 'Code successfully cloned'
+                checkout scm
             }
         }
         stage('SonarQube Quality Analysis') {
