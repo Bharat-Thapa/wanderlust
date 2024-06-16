@@ -7,16 +7,6 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-  - host: "backend.com"
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: backend-service
-            port:
-              number: 8080
   - host: "frontend.com"
     http:
       paths:
@@ -27,24 +17,3 @@ spec:
             name: frontend-service
             port:
               number: 5173
-  - host: "mongo.com"
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: mongo-service
-            port:
-              number: 27017
-      
-  - host: "redis.com"
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: redis-service
-            port:
-              number: 6379    
